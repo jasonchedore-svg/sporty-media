@@ -1,0 +1,43 @@
+---
+import { withBase } from "../lib/paths";
+
+const path = Astro.url.pathname;
+const links = [
+  { href: withBase("/"), label: "Home", match: "home" },
+  { href: withBase("/posts/"), label: "Posts", match: "posts" },
+  { href: withBase("/about/"), label: "About", match: "about" },
+  { href: withBase("/style-guide/"), label: "Style guide", match: "style" },
+];
+
+function isCurrent(match: string) {
+  if (match === "home") return path === withBase("/") || path === withBase("");
+  return path.includes(`/${match}`);
+}
+---
+
+<div class="site-banner">
+  <div class="wrap">
+    <span>Ontario education · 19+ · not a tipster service</span>
+    <span>Risk of loss. Play responsibly.</span>
+  </div>
+</div>
+<header class="site-header">
+  <div class="wrap header-inner">
+    <a class="brand" href={withBase("/")}>
+      <span class="brand-mark">SM</span>
+      <span class="brand-text">
+        <strong>Sporty Media</strong>
+        <span>Market education</span>
+      </span>
+    </a>
+    <nav class="nav" aria-label="Primary">
+      {
+        links.map((link) => (
+          <a href={link.href} aria-current={isCurrent(link.match) ? "page" : undefined}>
+            {link.label}
+          </a>
+        ))
+      }
+    </nav>
+  </div>
+</header>

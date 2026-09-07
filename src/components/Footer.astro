@@ -1,0 +1,33 @@
+---
+import { disclaimer, responsiblePlay, siteTitle } from "../config";
+import { withBase } from "../lib/paths";
+---
+
+<footer class="site-footer">
+  <div class="wrap footer-grid">
+    <div>
+      <strong>{siteTitle}</strong>
+      <p>
+        Educational coverage of sports betting markets for readers in Ontario, Canada. No picks. No
+        locks. No guaranteed winners.
+      </p>
+      <p>{disclaimer}</p>
+    </div>
+    <div>
+      <strong>Read</strong>
+      <p>
+        <a href={withBase("/posts/")}>All posts</a><br />
+        <a href={withBase("/about/")}>About</a><br />
+        <a href={withBase("/style-guide/")}>Style guide</a><br />
+        <a href={withBase("/rss.xml")}>RSS feed</a>
+      </p>
+    </div>
+    <div>
+      <strong>Help</strong>
+      <p>
+        <a href={responsiblePlay.url}>{responsiblePlay.name}</a><br />
+        {responsiblePlay.phone}
+      </p>
+    </div>
+  </div>
+</footer>

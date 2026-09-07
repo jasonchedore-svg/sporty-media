@@ -1,0 +1,54 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Disclaimer from "../components/Disclaimer.astro";
+import Newsletter from "../components/Newsletter.astro";
+import { withBase } from "../lib/paths";
+---
+
+<BaseLayout
+  title="About"
+  description="Sporty Media is an educational sports betting analytics site for Ontario. No picks, locks, or guaranteed winners."
+>
+  <article class="wrap article-wrap">
+    <header class="post-hero">
+      <p class="kicker">About</p>
+      <h1>We teach the market. We do not sell the winner.</h1>
+      <p class="lede">
+        Sporty Media is a small educational site about sports betting prices. The intended audience
+        is adults in Ontario, Canada.
+      </p>
+    </header>
+    <div class="prose">
+      <h2>What we publish</h2>
+      <p>
+        Explainers on closing line value (CLV), juice and overround, how to read a line move, and
+        board notes that describe <em>why</em> a number shifted. The voice is classroom, not
+        clubhouse. If a sentence sounds like a lock, it does not belong here.
+      </p>
+      <h2>What we will not do</h2>
+      <ul>
+        <li>Sell or imply picks, “locks,” parlays of the week, or guaranteed winners.</li>
+        <li>Grade a night by who covered, as if that were the whole story.</li>
+        <li>Treat a steam move as a bet signal without saying what is unknown.</li>
+        <li>Write for anyone under 19, or treat betting as entertainment without naming the cost.</li>
+      </ul>
+      <h2>Ontario</h2>
+      <p>
+        Sports betting is legal for adults 19+ in Ontario through provincially regulated operators.
+        Legal does not mean risk-free. A market can be fair and still take your money. Read our
+        <a href={withBase("/style-guide/")}>style guide</a> if you want the house rules for how we write.
+      </p>
+      <h2>Contact</h2>
+      <p>
+        This is a static GitHub Pages site. Newsletter signup uses a Substack URL in
+        <code>src/config.ts</code> (placeholder until you publish).
+      </p>
+    </div>
+    <div style="margin-top: 2rem;">
+      <Disclaimer />
+    </div>
+    <div style="margin-top: 1rem;">
+      <Newsletter />
+    </div>
+  </article>
+</BaseLayout>

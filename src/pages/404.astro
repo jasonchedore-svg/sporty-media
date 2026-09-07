@@ -1,0 +1,16 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import { withBase } from "../lib/paths";
+---
+
+<BaseLayout title="Page not found" description="That page is not on Sporty Media.">
+  <section class="wrap hero">
+    <p class="kicker">404</p>
+    <h1>Nothing posted at this number.</h1>
+    <p class="lede">The page is missing. The disclaimer still applies.</p>
+    <div class="hero-actions">
+      <a class="btn btn-primary" href={withBase("/")}>Back to home</a>
+      <a class="btn btn-ghost" href={withBase("/posts/")}>Browse posts</a>
+    </div>
+  </section>
+</BaseLayout>

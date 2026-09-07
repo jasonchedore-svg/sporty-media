@@ -1,0 +1,40 @@
+---
+import { getCollection } from "astro:content";
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import Disclaimer from "../../components/Disclaimer.astro";
+import { withBase } from "../../lib/paths";
+
+const posts = (await getCollection("posts")).sort(
+  (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf(),
+);
+---
+
+<BaseLayout title="Posts" description="Educational posts on CLV, juice, line moves, and board notes.">
+  <section class="wrap article-wrap">
+    <header class="post-hero">
+      <p class="kicker">Archive</p>
+      <h1>Posts</h1>
+      <p class="lede">Lessons first, then a board-notes template. Nothing here is a pick.</p>
+    </header>
+    <div class="grid" style="gap:1rem; max-width: 46rem;">
+      {
+        posts.map((post) => (
+          <article class="card">
+            <p class="meta">
+              <span class="pill">{post.data.category}</span>
+              {" · "}
+              {post.data.pubDate.toLocaleDateString("en-CA")}
+            </p>
+            <h2>
+              <a href={withBase(`/posts/${post.id}/`)}>{post.data.title}</a>
+            </h2>
+            <p>{post.data.description}</p>
+          </article>
+        ))
+      }
+    </div>
+    <div style="margin-top: 2rem;">
+      <Disclaimer />
+    </div>
+  </section>
+</BaseLayout>
