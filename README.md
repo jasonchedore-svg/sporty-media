@@ -67,6 +67,12 @@ House voice: [src/pages/style-guide.astro](src/pages/style-guide.astro). RSS: `/
 
 Every page includes the Ontario gambling disclaimer (risk of loss, 19+, responsible play).
 
+## Ops / Plan
+
+Internal working plan (positioning, Ontario compliance, GitHub Pages + Substack + TikTok/YouTube, later revenue, bot ops, 90-day roadmap):
+
+- [docs/BUSINESS-PLAN.md](docs/BUSINESS-PLAN.md)
+
 ## Stack
 
 Static [Astro](https://astro.build) site. No server. Markdown in-repo. Mobile-first layout. GitHub Actions → GitHub Pages.
