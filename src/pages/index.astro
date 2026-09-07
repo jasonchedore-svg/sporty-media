@@ -1,0 +1,77 @@
+---
+import { getCollection } from "astro:content";
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Disclaimer from "../components/Disclaimer.astro";
+import Newsletter from "../components/Newsletter.astro";
+import { siteTagline } from "../config";
+import { withBase } from "../lib/paths";
+
+const posts = (await getCollection("posts")).sort(
+  (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf(),
+);
+---
+
+<BaseLayout>
+  <section class="hero wrap">
+    <p class="kicker">Ontario · education first</p>
+    <h1>{siteTagline}</h1>
+    <p class="lede">
+      Sporty Media explains how sports betting <em>prices</em> work — closing line value, juice,
+      line moves, and board notes. We are not a tipster service. We do not sell picks, locks, or
+      guaranteed winners.
+    </p>
+    <div class="hero-actions">
+      <a class="btn btn-primary" href={withBase("/posts/")}>Read the lessons</a>
+      <a class="btn btn-ghost" href={withBase("/about/")}>What we are (and aren’t)</a>
+    </div>
+  </section>
+
+  <section class="wrap section">
+    <h2>Start here</h2>
+    <div class="grid card-grid">
+      {
+        posts.map((post) => (
+          <article class="card">
+            <p class="meta">
+              <span class="pill">{post.data.category}</span>
+              {" · "}
+              {post.data.pubDate.toLocaleDateString("en-CA")}
+            </p>
+            <h3>
+              <a href={withBase(`/posts/${post.id}/`)}>{post.data.title}</a>
+            </h3>
+            <p>{post.data.description}</p>
+          </article>
+        ))
+      }
+    </div>
+  </section>
+
+  <section class="wrap section split">
+    <div>
+      <h2>A price classroom, not a locker-room tout.</h2>
+      <p class="lede">
+        Tonight’s scoreboard is a noisy sample. The market’s closing number is a denser one. We
+        write so you can read a ticket the way a trader reads a quote.
+      </p>
+      <ul class="points">
+        <li>
+          <strong>Process over narrative.</strong> One cashed bet proves almost nothing. A habit of
+          beating the close is a different claim.
+        </li>
+        <li>
+          <strong>Fees before “value.”</strong> Juice, alt lines, parlays, and boosts change the
+          number you think you are getting.
+        </li>
+        <li>
+          <strong>Moves need context.</strong> A number that travels is information or noise. Board
+          notes try to say which — without telling you to bet it.
+        </li>
+      </ul>
+    </div>
+    <div class="grid">
+      <Disclaimer />
+      <Newsletter />
+    </div>
+  </section>
+</BaseLayout>

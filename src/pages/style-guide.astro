@@ -1,0 +1,69 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Disclaimer from "../components/Disclaimer.astro";
+import { withBase } from "../lib/paths";
+---
+
+<BaseLayout
+  title="Style guide"
+  description="Sporty Media house style: education first, no locks, no guaranteed winners, Ontario disclaimers."
+>
+  <article class="wrap article-wrap">
+    <header class="post-hero">
+      <p class="kicker">House style</p>
+      <h1>Education first. No locks.</h1>
+      <p class="lede">
+        These rules keep Sporty Media from sliding into tipster copy. Use them on every post,
+        including board notes.
+      </p>
+    </header>
+    <div class="prose">
+      <h2>Positioning</h2>
+      <p>
+        We write about <strong>markets</strong>: prices, fees, information, and uncertainty. We do
+        not write as if the reader should place a bet tonight. A useful piece leaves someone better
+        at reading a board. It does not leave them with a ticket.
+      </p>
+
+      <h2>Banned language</h2>
+      <ul>
+        <li><strong>Lock, smash, hammer, can’t lose, guaranteed, easy money.</strong></li>
+        <li><strong>Pick, play of the day, best bet</strong> used as a recommendation.</li>
+        <li>Promises about units, seasons, or “beating the books” as a service.</li>
+        <li>Fake certainty: “sharps are all over this” without a source or a caveat.</li>
+      </ul>
+
+      <h2>Preferred language</h2>
+      <ul>
+        <li>Number, price, close, juice, hold, overround, CLV, steam, grind, board note.</li>
+        <li>“The market moved X because Y is reported” — not “bet the move.”</li>
+        <li>“This would have been plus / minus CLV if you had the open” — hypothetical, labeled.</li>
+        <li>Unknowns listed in public, the same way a good note lists them in private.</li>
+      </ul>
+
+      <h2>Board notes</h2>
+      <p>
+        A board note explains a <em>shift</em>, not a side. Use the
+        <a href={withBase("/posts/board-notes-mlb-nfl-template/")}>MLB / NFL template</a>: open →
+        current → close (if available), who followed, news vs money, and what you still do not know.
+        Never end a note with a wager.
+      </p>
+
+      <h2>Examples</h2>
+      <p>Examples should be round numbers and clearly hypothetical unless they are historical.</p>
+      <ul>
+        <li>Good: “You bet −110; the close is −120. That ticket beat the close.”</li>
+        <li>Bad: “Take the under tonight, the close is going to be a gift.”</li>
+      </ul>
+
+      <h2>Disclaimer</h2>
+      <p>
+        Every page carries the Ontario disclaimer: risk of loss, 19+, responsible play. Do not hide
+        it in the footer only. Put a copy near the article as well.
+      </p>
+    </div>
+    <div style="margin-top: 2rem;">
+      <Disclaimer />
+    </div>
+  </article>
+</BaseLayout>
